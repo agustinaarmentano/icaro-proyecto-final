@@ -1,4 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+/* *{
+  font-family: 'Poppins'!important;
+} */
+html, body { height: 100%; font-family: 'Poppins'!important;}
+body { margin: 0; font-family: 'Poppins'!important; }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.container-login{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(209,215,255);
+  background: linear-gradient(90deg, rgba(209,215,255,1) 0%, rgba(197,206,255,0) 100%);
+}
+
+/* buttons */
+.button-login{
+  width: 100%;
+  margin-top: 1rem;
+  display: block;
+  margin: auto;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #a25bff;
+  border-radius: 6px;
+}
+.button-login:hover{
+  background-color: #d0aefc;
+  color: #7c19fd;
+}
+.mat-dialog-container{
+  color: #a25bff;
+  background: rgb(193, 200, 245);
+  background: linear-gradient(90deg, rgba(209,215,255,1) 0%, rgba(247, 248, 255, 0.63) 100%);
+  border-radius: 12px;
+}
