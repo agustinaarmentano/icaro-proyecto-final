@@ -1,0 +1,10 @@
+.input-email, .textarea-email{
+  width: 100%;
+  margin-bottom:20px
+}
+.enviar-btn{
+  background-color: #a25bff;
+  color: white;
+  display: flex;
+  margin: auto;
+}

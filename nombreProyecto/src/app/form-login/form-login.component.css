@@ -1,0 +1,28 @@
+.form{
+  width: 450px;
+  margin: auto;
+  text-align: center;
+}
+.form-label{
+  display: block;
+}
+/* .button-login{
+  width: 100%;
+  margin-top: 1rem;
+  padding: 5px;
+  display: block;
+  margin: auto;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #a25bff;
+  border-radius: 6px;
+}
+.button-login:hover{
+  background-color: #d0aefc;
+  color: #7c19fd;
+} */
+.button-login-link{
+  color: #862aff;
+  margin-top: 1rem;
+  padding: 4px;
+}

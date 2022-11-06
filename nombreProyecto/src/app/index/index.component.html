@@ -1,0 +1,32 @@
+<div class="container-login">
+  <div class="menu">
+    <div style="display:flex;justify-content: center;align-items: center;">
+      <img class="img" src="../../assets/logo.png" alt="logo">
+    </div>
+    <button class="button-redactar" mat-raised-button (click)="openDialog()"><mat-icon>edit</mat-icon>Redactar</button>
+    <button class="button-login" (click)="asignarRecibidos()" mat-raised-button><mat-icon>arrow_right</mat-icon> Recibidos</button>
+    <button class="button-login" mat-raised-button (click)="asignarEnviados()"><mat-icon>arrow_right</mat-icon> Enviados</button>
+  </div>
+  <div *ngIf="this.value === 'recibidos'" class="container-emails">
+    <ul *ngFor ="let email of emailsRecibidos">
+      <li class="item-emails">
+        <mat-grid-list cols="3" rowHeight="12:1">
+          <mat-grid-tile>{{email.usuario ? email.usuario.nombre : 'undefined'}}</mat-grid-tile>
+          <mat-grid-tile>{{email.texto}}</mat-grid-tile>
+          <mat-grid-tile>{{email.fecha}}</mat-grid-tile>
+        </mat-grid-list>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="this.value === 'enviados'" class="container-emails">
+    <ul *ngFor ="let email of emailsEnviados">
+      <li class="item-emails">
+        <mat-grid-list cols="3" rowHeight="12:1">
+          <mat-grid-tile>{{email.usuario ? email.usuario.nombre : 'undefined'}}</mat-grid-tile>
+          <mat-grid-tile>{{email.texto}}</mat-grid-tile>
+          <mat-grid-tile>{{email.fecha}}</mat-grid-tile>
+        </mat-grid-list>
+      </li>
+    </ul>
+  </div>
+</div>

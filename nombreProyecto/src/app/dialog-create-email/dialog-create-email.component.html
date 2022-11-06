@@ -1,0 +1,13 @@
+  <mat-grid-list mat-dialog-title cols="2" rowHeight="5:1">
+    <mat-grid-tile><p>Mesaje nuevo</p></mat-grid-tile>
+    <mat-grid-tile><button mat-button (click)="closeDialog()">x</button></mat-grid-tile>
+  </mat-grid-list>
+  <div mat-dialog-content>
+    <form class="form-group" [formGroup]="form">
+        <input type="email" formControlName="destinatarios" class="input-email" matInput placeholder="Destinatarios">
+        <textarea formControlName="texto" class="textarea-email" matInput placeholder="..."></textarea>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button class="enviar-btn">Enviar</button>
+  </div>
