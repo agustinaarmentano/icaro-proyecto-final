@@ -32,3 +32,7 @@ ALTER TABLE emails
 ADD destinatario VARCHAR(40)
 
 ALTER TABLE `emails` add COLUMN `remitente` varchar(60);
+
+-- CONSULTAS
+--Cantidad de usuarios por país.
+select count(*) from usuarios where pais='Argentina papa';
