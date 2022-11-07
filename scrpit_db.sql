@@ -13,7 +13,8 @@ CREATE TABLE `emails`(
     texto VARCHAR(144),
     fecha DATE,
     recibido boolean,
-    enviado boolean
+    enviado boolean,
+    leido boolean
 );
 ALTER TABLE emails
 ADD idusuarios INT;
