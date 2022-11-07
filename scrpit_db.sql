@@ -34,5 +34,12 @@ ADD destinatario VARCHAR(40)
 ALTER TABLE `emails` add COLUMN `remitente` varchar(60);
 
 -- CONSULTAS
+
 --Cantidad de usuarios por país.
 select count(*) from usuarios where pais='Argentina papa';
+-- Cantidad de mensajes por usuario.
+select count(*) from emails where idusuarios=1;
+--Cantidad de mensajes leídos por usuario
+select count(*) from emails where leido=true;
+--Cantidad de mensajes por fecha.
+select count(*) from emails where fecha='2022-11-07';
