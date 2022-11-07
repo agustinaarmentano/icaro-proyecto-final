@@ -29,6 +29,23 @@ const hashPassword = async (req, res, next) => {
 }
 
 module.exports = (app) => {
+    // auth
+    app.post('/registro', async function(req, res){
+        user = await auth.create(req, res);
+        return res.send(user)
+    });
+    app.post('/login', async function(req, res){
+        user = await auth.login(req, res);
+        return res.send(user)
+    });
+    app.get('/logout', blockLogout, async function(req, res){
+        req.session.destroy(function(err) {
+            // cannot access session here
+            if (err) return res.send(err);
+            return res.status(200).send({ msg: "LOGOUT_OK"});
+
+        })
+    });
     // app.use((req, res, next) => {
     //     if (req.session) next();
     //     res.status(401).send({error: true, msg: "SESSION_EXPIRED"});
@@ -40,23 +57,28 @@ module.exports = (app) => {
         res.send(emails)
     })
     app.get('/emails/enviados' , async function(req, res) {
-        const emails = await email.getEnviados();
+        console.log('req.sesion.user emails enviados', req.session)
+        const emails = await email.getEnviados(req, res);
         res.send(emails)
     })
     app.get('/emails/recibidos' , async function(req, res) {
-        const emails = await email.getRecibidos();
+        console.log('req.sesion.user emails recibidos', req.session)
+
+        const emails = await email.getRecibidos(req, res);
         res.send(emails)
     })
     app.post('/emails' , async function(req, res){
+        console.log('entra a emails')
+        console.log(req.session)
         nuevo_email = {
             texto:  req.body.texto,
             destinatario: req.body.destinatario,
             fecha: new Date(),
-            recibido: req.body.recibido,
-            enviado: req.body.enviado,
+            recibido: false,
+            enviado: true,
             idusuarios: req.body.idusuarios
         }
-        val = await email.create(nuevo_email)
+        val = await email.create(nuevo_email, req, res)
         res.send(val)
         console.log(val)
     })
@@ -83,21 +105,4 @@ module.exports = (app) => {
         res.send(val)
         console.log(val)
     })
-    // auth
-    app.post('/registro', async function(req, res){
-        user = await auth.create(req, res);
-        return res.send(user)
-    });
-    app.post('/login', async function(req, res){
-        user = await auth.login(req, res);
-        return res.send(user)
-    });
-    app.get('/logout', blockLogout, async function(req, res){
-        req.session.destroy(function(err) {
-            // cannot access session here
-            if (err) return res.send(err);
-            return res.status(200).send({ msg: "LOGOUT_OK"});
-
-        })
-    });
 }

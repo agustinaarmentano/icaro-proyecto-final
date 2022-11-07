@@ -11,16 +11,15 @@ class AuthController {
         return Usuarios.findOne({where: { usuario: usuario}})
         .then(async (user) => {
             if(!user) res.status(404).send({msg: 'el usuario no existe'});
-            console.log(user.salt)
+
             const hash = await bcrypt.hash(req.body.password, user.salt);
             const match = user.password === hash;
             // const match = await bcrypt.compare(user.password, hash);
 
-            console.log('hash', hash);
-            console.log('user pass', user.password)
-
             if(match) {
-                req.session = user;
+                console.log('req.sesion.user_id', user.idusuarios)
+                req.session.user_id = user.idusuarios;
+                console.log('req.sesion.user',req.session)
                 res.status(200).send({login: 'ok'});
             } else res.status(400).send({login: 'error'});
         })

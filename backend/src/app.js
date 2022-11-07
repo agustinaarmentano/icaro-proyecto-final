@@ -2,6 +2,13 @@ const express = require('express');
 const app = express();
 const session = require('express-session')
 
+app.set('trust proxy', 1) // trust first proxy
+
+app.use(session({
+   secret: 'keyboard cat',
+   resave: true,
+   saveUninitialized: true
+}))
 
 const cors = require('cors');
 app.use(cors());
@@ -33,17 +40,12 @@ const port = 4000;
 app.listen(port, 'localhost', () => {
     console.log('corriendo en el puerto '+ port )
 });
-var router = require('./routes/routes.js');
 
 // app use
 app.use(bodyParser.urlencoded({
    extended: true
- }));
+}));
 
- app.use(bodyParser.json());
-   // app.use(session({
-   // secret: 'keyboard cat',
-   // resave: false,
-   // saveUninitialized: true
-   // }))
+app.use(bodyParser.json());
+var router = require('./routes/routes.js');
 router(app);

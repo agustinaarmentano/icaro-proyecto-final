@@ -5,7 +5,9 @@ const Email = db.emails
 class EmailController {
     constructor() {}
     
-    create(email){
+    create(email, req, res){
+        const user_id = req.session.user_id;
+        console.log('user id al crear email')
         return Email.create(email)
         .then((res) => res)
         .catch((err)=> err)
@@ -18,12 +20,14 @@ class EmailController {
         .then((data) => data)
         .catch((err) => console.log(err))
     }
-    getEnviados() {
+    getEnviados(req, res) {
+        console.log(req.session)
         return Email.findAll({ where: { enviado: 1 },include:{model : db.usuarios}})
         .then((data) => data)
         .catch((err) => console.log(err))
     }
-    getRecibidos() {
+    getRecibidos(req, res) {
+        console.log(req.session)
         return Email.findAll({ where: { recibido: 1 },include:{model : db.usuarios} })
         .then((data) => data)
         .catch((err) => console.log(err))

@@ -13,8 +13,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class DialogCreateEmailComponent implements OnInit {
   form = new FormGroup({
-    destinatario: new FormControl('', [Validators.required]),
-    texto: new FormControl('', Validators.required)
+    destinatario: new FormControl('', [Validators.required, Validators.email]),
+    texto: new FormControl('', Validators.required),
   })
 
   constructor(private emailsService: EmailsService, public dialog: MatDialog) { }
@@ -26,9 +26,13 @@ export class DialogCreateEmailComponent implements OnInit {
     this.dialog.closeAll()
   }
 
-  // this.emailsService.createEmails(this.email).subscribe((res: any) => {
-  //   console.log(res)
-  // })
+  crear():void{
+    console.log('entra a crear')
+    this.emailsService.createEmails(this.form.value).subscribe((res:object) => {
+      return res
+    })
+  }
+
 
 
 }

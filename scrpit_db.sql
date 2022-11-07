@@ -1,7 +1,7 @@
 CREATE SCHEMA `correos_db`;
 use correos_db;
 CREATE TABLE `usuarios`(
-	idusuarios INT NOT NULL,
+	idusuarios INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(45),
     apellido VARCHAR(45),
     pais VARCHAR(45),
@@ -9,7 +9,7 @@ CREATE TABLE `usuarios`(
     PRIMARY KEY(idusuarios)
 );
 CREATE TABLE `emails`(
-	idemails INT NOT NULL PRIMARY KEY,
+	idemails INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     texto VARCHAR(144),
     fecha DATE,
     recibido boolean,
