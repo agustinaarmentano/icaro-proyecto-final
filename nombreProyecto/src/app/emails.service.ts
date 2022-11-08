@@ -20,4 +20,7 @@ export class EmailsService {
   createEmails(email: any){
     return this.http.post('http://localhost:4000/emails', email);
   }
+  deleteEmails(id: number){
+    return this.http.delete(`http://localhost:4000/emails/${id}`);
+  }
 }

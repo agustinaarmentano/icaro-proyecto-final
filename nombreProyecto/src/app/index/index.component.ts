@@ -65,5 +65,10 @@ export class IndexComponent implements OnInit {
       return res;
     })
   }
+  deleteEmail(id: number){
+    this.emailsService.deleteEmails(id).subscribe((res: any) => {
+      return res;
+    })
+  }
 
 }

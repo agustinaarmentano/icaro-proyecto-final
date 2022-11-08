@@ -21,10 +21,11 @@
   <div *ngIf="this.value === 'enviados'" class="container-emails">
     <ul *ngFor ="let email of emailsEnviados">
       <li class="item-emails">
-        <mat-grid-list cols="3" rowHeight="12:1">
+        <mat-grid-list cols="4" rowHeight="12:1">
           <mat-grid-tile>{{email.destinatario ? email.destinatario : 'undefined'}}</mat-grid-tile>
           <mat-grid-tile>{{email.texto}}</mat-grid-tile>
           <mat-grid-tile>{{email.fecha}}</mat-grid-tile>
+          <mat-grid-tile><button (click)="deleteEmail(email.idemails)" class="button-borrar" mat-icon-button color="warn"><mat-icon>delete</mat-icon></button></mat-grid-tile>
         </mat-grid-list>
       </li>
     </ul>
