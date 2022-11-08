@@ -29,6 +29,7 @@ export class DialogCreateEmailComponent implements OnInit {
   crear():void{
     console.log('entra a crear')
     this.emailsService.createEmails(this.form.value).subscribe((res:object) => {
+      this.dialog.closeAll()
       return res
     })
   }
