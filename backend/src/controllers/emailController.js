@@ -32,5 +32,13 @@ class EmailController {
         .then((data) => data)
         .catch((err) => console.log(err))
     }
+    delete(id){
+        return Email.destroy({where: {idemails: id}})
+        .then((data) => data)
+        .catch((err) => {
+            console.log(err)
+            return err
+        })
+    }
 }
 module.exports = EmailController;

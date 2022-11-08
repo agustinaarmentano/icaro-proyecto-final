@@ -82,6 +82,10 @@ module.exports = (app) => {
         res.send(val)
         console.log(val)
     })
+    app.delete('/emails/:id' , async function(req, res){
+        const email_delete = await email.delete(req.params.id)
+        res.send(email_delete)
+    })
     // usuarios
     app.get('/usuarios' , async function(req, res) {
         const usuarios = await usuario.get();
